@@ -129,15 +129,15 @@ private http = inject(HttpClient);
   });
 
   this.http.get(
-    `http://localhost:8080/api/reports/generate`,
-    {
-      headers,
-      params: {
-        type: type,
-        email: email
-      },
-      responseType: 'blob'
-    }
+  `https://team4-powered-carbon-footprint.onrender.com/api/reports/generate`,
+  {
+    headers,
+    params: {
+      type: type,
+      email: email
+    },
+    responseType: 'blob'
+  }
   ).subscribe({
     next: (blob) => {
       const url = window.URL.createObjectURL(blob);
@@ -174,8 +174,8 @@ private http = inject(HttpClient);
   const isExcel = report.format.toUpperCase() === 'EXCEL';
 
   const endpoint = isExcel
-    ? 'http://localhost:8080/api/reports/generate-excel'
-    : 'http://localhost:8080/api/reports/generate';
+  ? 'https://team4-powered-carbon-footprint.onrender.com/api/reports/generate-excel'
+  : 'https://team4-powered-carbon-footprint.onrender.com/api/reports/generate';
 
   const extension = isExcel ? 'xlsx' : 'pdf';
 

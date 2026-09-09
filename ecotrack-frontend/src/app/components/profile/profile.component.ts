@@ -78,9 +78,9 @@ memberSince = '';
     });
 
     this.http.get<any>(
-      `http://localhost:8080/profile/${encodeURIComponent(email)}`,
-      { headers }
-    ).subscribe({
+  `https://team4-powered-carbon-footprint.onrender.com/profile/${encodeURIComponent(email)}`,
+  { headers }
+).subscribe({
 
       next: (profile) => {
 
@@ -157,9 +157,9 @@ if (createdAt) {
     });
 
     const url =
-      `http://localhost:8080/profile/${encodeURIComponent(email)}` +
-      `?fullName=${encodeURIComponent(fullName)}` +
-      `&location=${encodeURIComponent(location)}`;
+  `https://team4-powered-carbon-footprint.onrender.com/profile/${encodeURIComponent(email)}` +
+  `?fullName=${encodeURIComponent(fullName)}` +
+  `&location=${encodeURIComponent(location)}`;
 
     console.log('Updating profile:', {
       email,
