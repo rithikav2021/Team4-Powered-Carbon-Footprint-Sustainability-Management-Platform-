@@ -77,11 +77,10 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(
+        configuration.setAllowedOriginPatterns(
                 List.of(
-                        "http://localhost:4200",
-                        "http://localhost:57277",
-                        "https://ecotrack-frontend-ashen.vercel.app"
+                        "http://localhost:*",
+                        "https://*.vercel.app"
                 )
         );
 

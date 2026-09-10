@@ -8,10 +8,12 @@ import com.ecotrack.backend.entity.User;
 import com.ecotrack.backend.repository.UserRepository;
 import com.ecotrack.backend.security.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 
@@ -25,6 +27,13 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) {
+
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Email already registered"
+            );
+        }
 
         User user = User.builder()
                 .fullName(request.getFullName())
@@ -44,25 +53,7 @@ public class AuthService {
                 token,
                 user.getEmail(),
                 user.getRole().name(),
-                "User registered successfully");
-    }
-
-    public AuthResponse login(LoginRequest request) {
-
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()));
-
-        User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow();
-
-        String token = jwtService.generateToken(user.getEmail());
-
-        return new AuthResponse(
-                token,
-                user.getEmail(),
-                user.getRole().name(),
-                "Login successful");
+                "User registered successfully"
+        );
     }
 }
