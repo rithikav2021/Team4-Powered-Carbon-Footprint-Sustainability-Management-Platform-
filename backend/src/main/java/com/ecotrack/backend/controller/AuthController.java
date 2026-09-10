@@ -29,4 +29,8 @@ public class AuthController {
 
         return ResponseEntity.ok(authService.login(request));
     }
+    @GetMapping("/health")
+    public ResponseEntity<String> health() {
+        return ResponseEntity.ok("Backend is working");
+    }
 }
