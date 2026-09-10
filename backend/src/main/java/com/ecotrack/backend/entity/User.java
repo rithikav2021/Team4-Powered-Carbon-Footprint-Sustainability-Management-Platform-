@@ -27,10 +27,9 @@ public class User {
     @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
-    @Convert(converter = RoleConverter.class)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
-
     @Column(name = "is_active", nullable = false)
     private Boolean active;
 
