@@ -26,6 +26,9 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    // =========================
+    // REGISTER
+    // =========================
     public AuthResponse register(RegisterRequest request) {
 
         if (userRepository.existsByEmail(request.getEmail())) {
@@ -54,6 +57,34 @@ public class AuthService {
                 user.getEmail(),
                 user.getRole().name(),
                 "User registered successfully"
+        );
+    }
+
+    // =========================
+    // LOGIN
+    // =========================
+    public AuthResponse login(LoginRequest request) {
+
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "User not found"
+                ));
+
+        String token = jwtService.generateToken(user.getEmail());
+
+        return new AuthResponse(
+                token,
+                user.getEmail(),
+                user.getRole().name(),
+                "Login successful"
         );
     }
 }
