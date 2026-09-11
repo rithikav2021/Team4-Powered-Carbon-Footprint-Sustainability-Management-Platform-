@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class CarbonService {
 
- private apiUrl = 'https://team4-powered-carbon-footprint.onrender.com/carbon';
+  private apiUrl =
+    'https://team4-powered-carbon-footprint-sustainability-ma-production.up.railway.app/carbon';
 
   constructor(private http: HttpClient) {}
 

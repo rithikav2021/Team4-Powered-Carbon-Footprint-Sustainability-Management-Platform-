@@ -9,10 +9,14 @@ export class ProfileService {
 
   private http = inject(HttpClient);
 
-private apiUrl = 'https://team4-powered-carbon-footprint.onrender.com/profile';
+  private apiUrl =
+    'https://team4-powered-carbon-footprint-sustainability-ma-production.up.railway.app/profile';
+
   // Get profile
   getProfile(email: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${email}`);
+    return this.http.get(
+      `${this.apiUrl}/${encodeURIComponent(email)}`
+    );
   }
 
   // Update profile
@@ -23,7 +27,7 @@ private apiUrl = 'https://team4-powered-carbon-footprint.onrender.com/profile';
   ): Observable<any> {
 
     return this.http.put(
-      `${this.apiUrl}/${email}?fullName=${encodeURIComponent(fullName)}&location=${encodeURIComponent(location)}`,
+      `${this.apiUrl}/${encodeURIComponent(email)}?fullName=${encodeURIComponent(fullName)}&location=${encodeURIComponent(location)}`,
       {}
     );
   }

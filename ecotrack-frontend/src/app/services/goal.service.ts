@@ -8,7 +8,10 @@ import { Goal } from '../models/goal.model';
 })
 export class GoalService {
 
-private apiUrl = 'https://team4-powered-carbon-footprint.onrender.com/goals';  constructor(private http: HttpClient) {}
+  private apiUrl =
+    'https://team4-powered-carbon-footprint-sustainability-ma-production.up.railway.app/goals';
+
+  constructor(private http: HttpClient) {}
 
   // Save Goal
   saveGoal(goal: Goal): Observable<any> {

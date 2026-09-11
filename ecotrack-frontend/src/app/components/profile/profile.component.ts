@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   readonly user = this.data.getUser();
   readonly currentEcoScore = this.data.currentEcoScore;
 
-memberSince = '';
+  memberSince = '';
   readonly badges = this.data.getBadges();
 
   // Authentication
@@ -56,9 +56,9 @@ memberSince = '';
   });
 
   ngOnInit(): void {
-  this.loadProfile();
-  this.data.loadCommunityData();
-}
+    this.loadProfile();
+    this.data.loadCommunityData();
+  }
 
   // ==========================================
   // LOAD PROFILE FROM BACKEND
@@ -78,18 +78,21 @@ memberSince = '';
     });
 
     this.http.get<any>(
-  `https://team4-powered-carbon-footprint.onrender.com/profile/${encodeURIComponent(email)}`,
-  { headers }
-).subscribe({
+      `https://team4-powered-carbon-footprint-sustainability-ma-production.up.railway.app/profile/${encodeURIComponent(email)}`,
+      { headers }
+    ).subscribe({
 
       next: (profile) => {
 
         console.log('Profile loaded from backend:', profile);
+
         const createdAt = profile?.user?.createdAt;
 
-if (createdAt) {
-  this.memberSince = new Date(createdAt).toISOString().split('T')[0];
-}
+        if (createdAt) {
+          this.memberSince = new Date(createdAt)
+            .toISOString()
+            .split('T')[0];
+        }
 
         const fullName =
           profile?.user?.fullName ||
@@ -114,6 +117,7 @@ if (createdAt) {
       },
 
       error: (error) => {
+
         console.error('Failed to load profile:', error);
 
         if (error.status === 403) {
@@ -121,6 +125,7 @@ if (createdAt) {
             '403 Forbidden - JWT token was not accepted by backend.'
           );
         }
+
       }
 
     });
@@ -157,9 +162,9 @@ if (createdAt) {
     });
 
     const url =
-  `https://team4-powered-carbon-footprint.onrender.com/profile/${encodeURIComponent(email)}` +
-  `?fullName=${encodeURIComponent(fullName)}` +
-  `&location=${encodeURIComponent(location)}`;
+      `https://team4-powered-carbon-footprint-sustainability-ma-production.up.railway.app/profile/${encodeURIComponent(email)}` +
+      `?fullName=${encodeURIComponent(fullName)}` +
+      `&location=${encodeURIComponent(location)}`;
 
     console.log('Updating profile:', {
       email,
