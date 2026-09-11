@@ -1,3 +1,7 @@
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
 .nav {
   position: sticky;
   top: 0;
@@ -11,10 +15,16 @@
   margin: 0 auto;
   padding: 0 24px;
   height: 72px;
+
   display: flex;
   align-items: center;
   gap: 24px;
 }
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
 
 .nav__brand {
   display: flex;
@@ -22,28 +32,43 @@
   gap: 10px;
   flex-shrink: 0;
 }
+
 .nav__brand-mark {
   width: 36px;
   height: 36px;
   border-radius: 10px;
+
   background: var(--sand-050);
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.nav__brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+
+.nav__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
 .nav__brand-name {
   font-family: var(--font-display);
   font-size: 19px;
   font-weight: 600;
   color: var(--white);
 }
+
 .nav__brand-sub {
   font-size: 10.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--moss-300);
 }
+
+
+/* =========================================================
+   DESKTOP NAVIGATION LINKS
+   ========================================================= */
 
 .nav__links {
   display: flex;
@@ -56,21 +81,45 @@
   display: flex;
   align-items: center;
   gap: 7px;
+
   padding: 9px 13px;
   border-radius: 999px;
+
   color: rgba(247, 244, 236, 0.78);
+
   font-size: 14px;
   font-weight: 500;
-  transition: background 0.15s ease, color 0.15s ease;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
   white-space: nowrap;
 }
-.nav__link-icon svg { fill: currentColor; display: block; }
-.nav__link:hover { background: rgba(247, 244, 236, 0.08); color: var(--white); }
+
+.nav__link-icon svg {
+  fill: currentColor;
+  display: block;
+}
+
+.nav__link:hover {
+  background: rgba(247, 244, 236, 0.08);
+  color: var(--white);
+}
+
 .nav__link--active {
   background: var(--sand-050);
   color: var(--pine-800);
 }
-.nav__link--active .nav__link-icon svg { fill: var(--pine-800); }
+
+.nav__link--active .nav__link-icon svg {
+  fill: var(--pine-800);
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
 
 .nav__right {
   display: flex;
@@ -80,170 +129,237 @@
   flex-shrink: 0;
 }
 
+
+/* =========================================================
+   ECO SCORE
+   ========================================================= */
+
 .nav__score {
   display: flex;
   align-items: center;
   gap: 9px;
 }
+
 .nav__score-ring {
   position: relative;
+
   width: 34px;
   height: 34px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .nav__score-value {
   position: absolute;
+
   font-size: 9px;
   font-weight: 600;
+
   color: var(--white);
 }
+
 .nav__score-label {
   font-size: 12.5px;
   color: var(--sand-100);
   font-weight: 500;
+
   display: none;
 }
+
+
+/* =========================================================
+   ACCOUNT
+   ========================================================= */
 
 .nav__account {
   display: flex;
   align-items: center;
   gap: 8px;
+
   padding: 5px 12px 5px 5px;
   border-radius: 999px;
+
   background: rgba(247, 244, 236, 0.1);
+
   transition: background 0.15s ease;
 }
-.nav__account:hover { background: rgba(247, 244, 236, 0.18); }
+
+.nav__account:hover {
+  background: rgba(247, 244, 236, 0.18);
+}
+
 .nav__account-avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
+
   background: var(--sand-050);
   color: var(--pine-800);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-size: 11px;
   font-weight: 700;
+
   flex-shrink: 0;
 }
+
 .nav__account-name {
   font-size: 13.5px;
   font-weight: 600;
   color: var(--white);
+
   white-space: nowrap;
 }
+
+
+/* =========================================================
+   LOGOUT / LOGIN
+   ========================================================= */
 
 .nav__logout {
   padding: 8px 14px;
   font-size: 13px;
+
   color: var(--sand-050);
   border-color: rgba(247, 244, 236, 0.35);
 }
-.nav__logout:hover { background: rgba(247, 244, 236, 0.1); }
+
+.nav__logout:hover {
+  background: rgba(247, 244, 236, 0.1);
+}
 
 .nav__login-btn {
   padding: 8px 16px;
+
   font-size: 13.5px;
+
   white-space: nowrap;
 }
 
+
+/* =========================================================
+   HAMBURGER
+   ========================================================= */
+
 .nav__menu-toggle {
   display: none;
+
   flex-direction: column;
   gap: 4px;
+
   background: none;
   border: none;
+
   padding: 8px;
+
+  cursor: pointer;
 }
+
 .nav__menu-toggle span {
   width: 20px;
   height: 2px;
+
   background: var(--sand-050);
+
   border-radius: 2px;
 }
 
+
+/* =========================================================
+   LARGE SCREEN
+   ========================================================= */
+
 @media (min-width: 900px) {
-  .nav__score-label { display: block; }
+
+  .nav__score-label {
+    display: block;
+  }
+
 }
 
-@media (max-width: 640px) {
-  .nav__account-name { display: none; }
-  .nav__account { padding: 5px; }
-  .nav__logout { padding: 8px 10px; }
-}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 899px) {
+
   .nav__links {
     position: fixed;
+
     top: 72px;
     left: 0;
     right: 0;
+
     background: var(--pine-800);
+
     flex-direction: column;
     align-items: stretch;
+
     padding: 8px 16px 16px;
+
     gap: 2px;
+
     display: none;
+
     box-shadow: var(--shadow-nav);
+
+    z-index: 9999;
   }
-  .nav__links--open { display: flex; }
-  .nav__link { padding: 12px 14px; }
-  .nav__menu-toggle { display: flex; }
+
+  .nav__links--open {
+    display: flex;
+  }
+
+  .nav__link {
+    padding: 12px 14px;
+  }
+
+  .nav__menu-toggle {
+    display: flex;
+  }
+
 }
-/* =========================================================
-   MOBILE NAVIGATION
-   ========================================================= */
-
-/* Hamburger hidden on laptop/desktop */
-.nav__menu-toggle {
-  display: none;
-}
 
 
 /* =========================================================
-   MOBILE VIEW
+   MOBILE
    ========================================================= */
 
 @media (max-width: 768px) {
 
-  /* Main navbar */
   .nav {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    overflow: visible;
   }
 
   .nav__inner {
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box;
+
+    height: 72px;
 
     padding: 10px 14px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    box-sizing: border-box;
 
-    position: relative;
+    gap: 10px;
   }
 
 
-  /* -----------------------------------------
+  /* -------------------------------
      BRAND
-     ----------------------------------------- */
+     ------------------------------- */
 
   .nav__brand {
     min-width: 0;
     flex: 1;
-    max-width: calc(100% - 55px);
-  }
-
-  .nav__brand-text {
-    min-width: 0;
   }
 
   .nav__brand-name {
@@ -255,35 +371,70 @@
   }
 
 
-  /* -----------------------------------------
+  /* -------------------------------
      RIGHT SIDE
-     ----------------------------------------- */
+     ------------------------------- */
 
   .nav__right {
+    margin-left: auto;
+
     display: flex;
     align-items: center;
+
     gap: 8px;
 
     flex-shrink: 0;
   }
 
 
-  /* Hide desktop-only items on phone */
+  /* Hide desktop score/account on mobile */
 
   .nav__score,
-  .nav__account,
-  .nav__logout,
-  .nav__login-btn {
+  .nav__account {
     display: none;
   }
 
 
-  /* -----------------------------------------
+  /* -------------------------------
+     LOGIN BUTTON
+     ------------------------------- */
+
+  .nav__login-btn {
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 8px 12px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
+  }
+
+
+  /* -------------------------------
+     LOGOUT
+     ------------------------------- */
+
+  .nav__logout {
+    display: none;
+  }
+
+
+  /* -------------------------------
      HAMBURGER
-     ----------------------------------------- */
+     ------------------------------- */
 
   .nav__menu-toggle {
-    display: flex;
+    display: flex !important;
 
     width: 42px;
     height: 42px;
@@ -291,58 +442,55 @@
     padding: 0;
     margin: 0;
 
-    flex-shrink: 0;
-
-    border: 1px solid #dce7dc;
-    border-radius: 12px;
-
-    background: #ffffff;
-
     align-items: center;
     justify-content: center;
+
     flex-direction: column;
 
     gap: 5px;
 
-    cursor: pointer;
+    flex-shrink: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #dce7dc;
+    border-radius: 12px;
 
     box-shadow: 0 3px 10px rgba(30, 70, 50, 0.08);
   }
 
   .nav__menu-toggle span {
-    display: block;
-
     width: 20px;
     height: 2px;
 
+    background: #173b2d;
+
     border-radius: 5px;
-
-    background: #19553b;
-
-    transition: all 0.25s ease;
   }
 
 
-  /* -----------------------------------------
-     MOBILE NAV LINKS
-     ----------------------------------------- */
+  /* -------------------------------
+     MOBILE MENU
+     ------------------------------- */
 
   .nav__links {
-    display: none;
-
     position: absolute;
 
-    top: 100%;
+    top: 72px;
     left: 10px;
     right: 10px;
 
     width: auto;
 
-    padding: 10px;
+    display: none;
 
     flex-direction: column;
 
+    align-items: stretch;
+
     gap: 4px;
+
+    padding: 10px;
 
     background: #ffffff;
 
@@ -354,18 +502,18 @@
     z-index: 9999;
   }
 
-
-  /* When hamburger is clicked */
-
   .nav__links.nav__links--open {
-    display: flex;
+    display: flex !important;
   }
 
 
-  /* Individual mobile links */
+  /* -------------------------------
+     MOBILE MENU LINKS
+     ------------------------------- */
 
   .nav__links .nav__link {
     width: 100%;
+
     box-sizing: border-box;
 
     display: flex;
@@ -377,23 +525,27 @@
 
     border-radius: 11px;
 
-    font-size: 14px;
+    color: #173b2d !important;
+
+    font-size: 15px;
+    font-weight: 600;
 
     text-decoration: none;
   }
 
 
-  .nav__links .nav__link:hover {
-    background: #f1f7f1;
+  /* Force menu text dark */
+
+  .nav__links .nav__link > span:last-child {
+    color: #173b2d !important;
   }
 
 
-  .nav__links .nav__link--active {
-    background: #e8f2e8;
-  }
+  /* Icons */
 
+  .nav__links .nav__link-icon {
+    color: #173b2d !important;
 
-  .nav__link-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -401,162 +553,25 @@
     flex-shrink: 0;
   }
 
-
-  /* -----------------------------------------
-     DASHBOARD / PAGE WIDTH FIX
-     ----------------------------------------- */
-
-  .eco-page {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-
-    overflow-x: hidden;
+  .nav__links .nav__link-icon svg {
+    fill: #173b2d !important;
   }
 
 
-  /* Prevent sections from becoming wider than phone */
+  /* Hover */
 
-  .hero,
-  .green-move-card,
-  .eco-adventure,
-  .grid-3,
-  .grid-2,
-  .analytics-grid,
-  .recent-activities,
-  .goals-section,
-  .insight-card {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+  .nav__links .nav__link:hover {
+    background: #f1f7f1;
+    color: #173b2d !important;
   }
 
 
-  /* -----------------------------------------
-     HERO
-     ----------------------------------------- */
+  /* Active */
 
-  .hero {
-    grid-template-columns: 1fr;
-  }
+  .nav__links .nav__link--active {
+    background: #e8f2e8;
 
-
-  .hero__text {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 24px 20px;
-  }
-
-
-  .hero__text h1 {
-    font-size: 26px;
-  }
-
-
-  /* -----------------------------------------
-     GREEN MOVE
-     ----------------------------------------- */
-
-  .green-move-card {
-    padding: 18px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-
-  .green-move-main {
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-
-
-  /* -----------------------------------------
-     TREE + CHALLENGE
-     ----------------------------------------- */
-
-  .eco-adventure {
-    grid-template-columns: 1fr;
-  }
-
-
-  .eco-tree-card,
-  .challenge-wheel-card {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-  }
-
-
-  .tree-content {
-    flex-direction: column;
-  }
-
-
-  /* -----------------------------------------
-     STATS
-     ----------------------------------------- */
-
-  .grid-3 {
-    grid-template-columns: 1fr;
-  }
-
-
-  /* -----------------------------------------
-     CHARTS
-     ----------------------------------------- */
-
-  .grid-2,
-  .analytics-grid {
-    grid-template-columns: 1fr;
-  }
-
-
-  /* -----------------------------------------
-     RECENT ACTIVITIES
-     ----------------------------------------- */
-
-  .recent-activities {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-
-    padding: 18px;
-  }
-
-
-  .activity-list {
-    grid-template-columns: 1fr;
-  }
-
-
-  .activity-row {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-
-  /* -----------------------------------------
-     GOALS
-     ----------------------------------------- */
-
-  .goals-section {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-
-    padding: 18px;
-  }
-
-
-  .goal-list {
-    grid-template-columns: 1fr;
-  }
-
-
-  .goal-item {
-    width: 100%;
-    box-sizing: border-box;
+    color: #173b2d !important;
   }
 
 }
@@ -580,26 +595,14 @@
     font-size: 8px;
   }
 
+  .nav__login-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
   .nav__menu-toggle {
     width: 40px;
     height: 40px;
-  }
-
-  .hero__text {
-    padding: 22px 16px;
-  }
-
-  .hero__text h1 {
-    font-size: 24px;
-  }
-
-  .green-move-card {
-    padding: 15px;
-  }
-
-  .eco-tree-card,
-  .challenge-wheel-card {
-    padding: 16px;
   }
 
 }
