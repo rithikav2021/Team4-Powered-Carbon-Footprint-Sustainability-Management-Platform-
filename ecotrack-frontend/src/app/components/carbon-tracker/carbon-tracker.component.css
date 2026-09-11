@@ -89,3 +89,148 @@
   transform: translateY(0);
   box-shadow: none;
 }
+/* =========================================================
+   CARBON TRACKER - MOBILE ONLY FIX
+   Desktop / Laptop remains unchanged
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Prevent whole page from becoming wider than phone */
+  .eco-page {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .eco-page-header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* Total logged */
+  .total-pill {
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .total-pill strong {
+    max-width: 100%;
+    font-size: 18px;
+    word-break: break-word;
+  }
+
+  /* Main layout */
+  .layout {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* Form and history cards */
+  .form,
+  .history {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Form fields */
+  .field {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Quantity + Unit stack vertically */
+  .field-row {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    box-sizing: border-box;
+  }
+
+  /* Estimate */
+  .estimate {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* Search/filter area */
+  .history__header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Prevent table from expanding the whole page */
+  .history {
+    overflow-x: hidden;
+  }
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+  }
+
+  .table th,
+  .table td {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .eco-page {
+    overflow-x: hidden;
+  }
+
+  .form,
+  .history {
+    padding: 18px;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .total-pill strong {
+    font-size: 17px;
+  }
+
+  .estimate {
+    padding: 10px 12px;
+  }
+
+}
