@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -22,6 +24,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 @Configuration
+@EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -43,22 +46,31 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
+                        // Allow CORS preflight requests
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/carbon/**").permitAll()
-                        .requestMatchers(
-                                "/auth/**",
-                                "/goals/**",
-                                "/carbon/**",
-                                "/carbon-engine/**"
-                        ).permitAll()
-                        .requestMatchers("/notifications/**").authenticated()
 
-                        .requestMatchers("/api/challenges/**").authenticated()
+                        // Public endpoints
+                        .requestMatchers(HttpMethod.GET, "/").permitAll()
+                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
+
+                        // Carbon endpoints
+                        .requestMatchers(HttpMethod.DELETE, "/carbon/**").permitAll()
+                        .requestMatchers("/carbon/**").permitAll()
+                        .requestMatchers("/carbon-engine/**").permitAll()
+
+                        // Goals
+                        .requestMatchers("/goals/**").permitAll()
+
+                        // Recommendations and Chat
                         .requestMatchers("/api/recommendations/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/chat").permitAll()
+
+                        // Protected endpoints
+                        .requestMatchers("/notifications/**").authenticated()
+                        .requestMatchers("/api/challenges/**").authenticated()
+
+                        // Everything else requires authentication
                         .anyRequest().authenticated()
                 )
 
