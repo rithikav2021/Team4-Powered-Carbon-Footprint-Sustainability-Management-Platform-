@@ -171,3 +171,125 @@ button {
 @media (max-width: 720px) {
   .eco-page { padding: 20px 16px 60px; }
 }
+/* =========================================================
+   ECOTRACK - GLOBAL RESPONSIVE FIX
+   Desktop + Tablet + Mobile
+========================================================= */
+
+/* Prevent any element from creating horizontal overflow */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* All major containers stay inside viewport */
+.eco-page,
+.nav,
+.nav__inner {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Images and media never exceed their container */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* Long text should wrap instead of increasing page width */
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a {
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .eco-page {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .eco-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 16px 60px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .eco-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Grids should never force the page wider */
+  .eco-page > *,
+  .eco-page section,
+  .eco-page article,
+  .eco-page aside,
+  .eco-page form {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Buttons fit their container */
+  .eco-btn {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Form controls */
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .eco-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .eco-card {
+    padding: 18px;
+  }
+
+}
