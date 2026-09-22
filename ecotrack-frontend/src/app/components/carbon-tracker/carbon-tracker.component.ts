@@ -9,6 +9,7 @@ import {
 import { MockDataService } from '../../services/mock-data.service';
 import { CarbonService } from '../../services/carbon.service';
 import { CarbonEngineService } from '../../services/carbon-engine.service';
+import { NotificationService } from '../../services/notification.service';
 import { CarbonEntry } from '../../models/data.model';
 
 import {
@@ -57,6 +58,13 @@ export class CarbonTrackerComponent implements OnInit {
   private data = inject(MockDataService);
   private carbonService = inject(CarbonService);
   private carbonEngineService = inject(CarbonEngineService);
+
+  // =========================================================
+  // NOTIFICATION SERVICE
+  // =========================================================
+
+  private notificationService =
+    inject(NotificationService);
 
   // =========================================================
   // DATABASE ACTIVITIES
@@ -627,7 +635,6 @@ export class CarbonTrackerComponent implements OnInit {
             'Activity deleted successfully'
           );
 
-          // Remove immediately from screen
           this.activityList.update(
             activities =>
               activities.filter(
@@ -640,7 +647,6 @@ export class CarbonTrackerComponent implements OnInit {
             'Activity deleted successfully'
           );
 
-          // Reload from database
           this.loadActivities();
         },
 
@@ -753,6 +759,17 @@ export class CarbonTrackerComponent implements OnInit {
             response
           );
 
+          // =================================================
+          // NOTIFICATION
+          // =================================================
+
+          this.notificationService.addNotification(
+            'Activity Added',
+            `${v.activity} was successfully added to your carbon tracker.`,
+            '🌱',
+            '/carbon-tracker'
+          );
+
           // Reload activities from database
           this.loadActivities();
 
@@ -831,6 +848,7 @@ export class CarbonTrackerComponent implements OnInit {
   ngOnInit(): void {
 
     this.loadActivities();
+
   }
 
 }

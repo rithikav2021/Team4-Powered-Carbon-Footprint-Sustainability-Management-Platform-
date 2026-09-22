@@ -168,6 +168,354 @@
   display: none;
 }
 
+/* =========================================================
+   NOTIFICATIONS
+   ========================================================= */
+
+.nav__notification-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+
+/* Bell button */
+
+.nav__notification-btn {
+  position: relative;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(247, 244, 236, 0.25);
+  border-radius: 50%;
+
+  background: rgba(247, 244, 236, 0.08);
+
+  color: var(--sand-050);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.nav__notification-btn:hover {
+  background: rgba(247, 244, 236, 0.18);
+
+  transform: translateY(-1px);
+}
+
+
+.nav__notification-btn:active {
+  transform: scale(0.96);
+}
+
+
+/* Unread badge */
+
+.nav__notification-badge {
+  position: absolute;
+
+  top: -4px;
+  right: -4px;
+
+  min-width: 17px;
+  height: 17px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  background: #d68c45;
+
+  color: #ffffff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  border: 2px solid var(--pine-800);
+}
+
+
+/* Dropdown */
+
+.nav__notification-dropdown {
+  position: absolute;
+
+  top: calc(100% + 12px);
+  right: 0;
+
+  width: 350px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e9df;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 16px 40px rgba(30, 70, 50, 0.18);
+
+  overflow: hidden;
+
+  z-index: 10000;
+}
+
+
+/* Header */
+
+.nav__notification-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 18px;
+
+  border-bottom: 1px solid #edf1eb;
+}
+
+
+.nav__notification-header h3 {
+  margin: 0;
+
+  color: #173b2d;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+.nav__notification-header span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7b8b82;
+
+  font-size: 11px;
+}
+
+
+.nav__notification-read-all {
+  border: none;
+
+  background: transparent;
+
+  color: #52796f;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  padding: 5px;
+}
+
+
+.nav__notification-read-all:hover {
+  color: #173b2d;
+
+  text-decoration: underline;
+}
+
+
+/* Notification list */
+
+.nav__notification-list {
+  max-height: 360px;
+
+  overflow-y: auto;
+}
+
+
+/* Individual notification */
+
+.nav__notification-item {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  padding: 13px 16px;
+
+  border: none;
+  border-bottom: 1px solid #f0f3ef;
+
+  background: #ffffff;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+
+  box-sizing: border-box;
+}
+
+
+.nav__notification-item:hover {
+  background: #f6f9f5;
+}
+
+
+.nav__notification-item--unread {
+  background: #f3f8f1;
+}
+
+
+.nav__notification-item--unread:hover {
+  background: #edf5eb;
+}
+
+
+/* Notification icon */
+
+.nav__notification-icon {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e8f2e8;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+}
+
+
+/* Content */
+
+.nav__notification-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.nav__notification-content strong {
+  color: #173b2d;
+
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+
+.nav__notification-content > span {
+  color: #66756d;
+
+  font-size: 11.5px;
+
+  line-height: 1.4;
+}
+
+
+.nav__notification-content small {
+  color: #9aa69f;
+
+  font-size: 10px;
+}
+
+
+/* Unread dot */
+
+.nav__notification-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  margin-top: 6px;
+
+  border-radius: 50%;
+
+  background: #d68c45;
+}
+
+
+/* Empty */
+
+.nav__notification-empty {
+  min-height: 140px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+}
+
+
+.nav__notification-empty span {
+  font-size: 25px;
+}
+
+
+.nav__notification-empty p {
+  margin: 0;
+
+  color: #7b8b82;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   NOTIFICATION RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .nav__notification-wrapper {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 400px) {
+
+  .nav__notification-dropdown {
+    position: fixed;
+
+    top: 78px;
+    left: 10px;
+    right: 10px;
+
+    width: auto;
+
+    max-width: none;
+  }
+
+}
 
 /* =========================================================
    ACCOUNT
@@ -605,4 +953,95 @@
     height: 40px;
   }
 
+}
+.nav__notification-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nav__notification-item:hover {
+  background: rgba(82, 121, 111, 0.08);
+}
+/* =========================================
+   GOLD NOTIFICATION BELL
+========================================= */
+
+.nav__notification-btn {
+  color: #d4a017 !important;
+}
+
+.nav__notification-btn svg {
+  color: #d4a017 !important;
+  stroke: #d4a017 !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+}
+
+/* Bell hover */
+.nav__notification-btn:hover {
+  color: #f0c14b !important;
+}
+
+.nav__notification-btn:hover svg {
+  stroke: #f0c14b !important;
+  transform: scale(1.08);
+}
+
+.nav__notification-btn svg {
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+/* =========================================
+   REAL FILLED GOLD BELL
+========================================= */
+
+.nav__notification-btn {
+  color: #d4a017 !important;
+}
+
+/* Main bell body */
+.nav__notification-btn svg path:first-of-type {
+  fill: #d4a017 !important;
+  stroke: #a87500 !important;
+  stroke-width: 1.4 !important;
+}
+
+/* Bell clapper */
+.nav__notification-btn svg path:last-of-type {
+  fill: #d4a017 !important;
+  stroke: #a87500 !important;
+  stroke-width: 1.8 !important;
+}
+
+/* Small gold shine/depth effect */
+.nav__notification-btn svg {
+  filter: drop-shadow(0 1px 1px rgba(120, 80, 0, 0.35));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover */
+.nav__notification-btn:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 3px rgba(120, 80, 0, 0.45));
+}
+/* 🔔 YELLOW NOTIFICATION BELL */
+.nav__notification-btn {
+  color: #ffd21f !important;
+}
+
+.nav__notification-btn svg path:first-of-type {
+  fill: #ffd21f !important;
+  stroke: #b88600 !important;
+}
+
+.nav__notification-btn svg path:last-of-type {
+  fill: #ffd21f !important;
+  stroke: #b88600 !important;
+}
+
+.nav__notification-btn svg {
+  filter: drop-shadow(0 1px 2px rgba(120, 90, 0, 0.35));
 }

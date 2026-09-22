@@ -736,5 +736,228 @@
   }
 
 </section>
+<!-- ================= CARBON FOOTPRINT SCANNER ================= -->
+
+<section class="footprint-scanner">
+
+  <!-- HEADER -->
+  <div class="scanner-header">
+
+    <div>
+      <span class="scanner-label">
+        👣 YOUR ECO IDENTITY
+      </span>
+
+      <h2>
+        Scan your footprint.
+      </h2>
+
+      <p>
+        Discover what kind of environmental impact you're leaving behind.
+      </p>
+    </div>
+
+    <span class="scanner-live">
+      ✨ Interactive
+    </span>
+
+  </div>
+
+
+  <!-- ================= BEFORE / DURING SCAN ================= -->
+
+  @if (!scanComplete()) {
+
+    <div class="scanner-main">
+
+      <!-- FOOTPRINT ANIMATION AREA -->
+
+      <div
+        class="footprint-area"
+        [class.scanning]="isScanning()"
+      >
+
+        <!-- Animated scanning line -->
+        @if (isScanning()) {
+          <div class="scanner-line"></div>
+        }
+
+        <!-- Glow -->
+        <div class="footprint-glow"></div>
+
+        <!-- Footprint -->
+        <div class="footprint-icon">
+          👣
+        </div>
+
+        <!-- Status -->
+
+        @if (!isScanning()) {
+
+          <div class="scan-status">
+            Ready to scan
+          </div>
+
+        } @else {
+
+          <div class="scan-status scanning-text">
+            Scanning... {{ scanProgress() }}%
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- SCANNER INFORMATION -->
+
+      <div class="scanner-info">
+
+        @if (!isScanning()) {
+
+          <h3>
+            Ready to discover your Eco Identity?
+          </h3>
+
+          <p>
+            We'll analyse your recent activity and create
+            a personalised footprint profile.
+          </p>
+
+          <button
+            class="scan-button"
+            type="button"
+            (click)="startFootprintScan()"
+          >
+
+            <span>👣</span>
+
+            Scan My Footprint
+
+          </button>
+
+        } @else {
+
+          <h3>
+            Reading your footprint...
+          </h3>
+
+          <p>
+            Analysing your recent choices and calculating
+            your sustainability pattern.
+          </p>
+
+
+          <!-- Progress -->
+
+          <div class="scan-progress-bar">
+
+            <div
+              class="scan-progress-fill"
+              [style.width.%]="scanProgress()"
+            ></div>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  }
+
+
+  <!-- ================= SCAN RESULT ================= -->
+
+  @if (scanComplete()) {
+
+    <div class="scan-result">
+
+      <!-- LEFT: RESULT ANIMATION -->
+
+      <div class="result-animation">
+
+        <div class="result-ring result-ring-one"></div>
+
+        <div class="result-ring result-ring-two"></div>
+
+        <div class="result-footprint">
+          👣
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT: RESULT CONTENT -->
+
+      <div class="result-content">
+
+        <span class="scan-complete-label">
+          ✨ IMPACT SCAN COMPLETE
+        </span>
+
+
+        <!-- Carbon Emission -->
+
+        <div class="impact-number">
+          {{ scannerEmission }}
+        </div>
+
+        <div class="impact-unit">
+          kg CO₂e
+        </div>
+
+
+        <!-- Eco Identity Score -->
+
+        <div class="eco-personality-score">
+
+          <span>
+            {{ ecoIdentityScore() }}%
+          </span>
+
+        </div>
+
+
+        <!-- Identity -->
+
+        <h3>
+          {{ ecoIdentityTitle() }}
+        </h3>
+
+
+        <p class="result-message">
+          {{ ecoIdentityMessage() }}
+        </p>
+
+
+        <p class="result-description">
+          Your footprint tells a story. Keep making small choices
+          that create a lighter impact.
+        </p>
+
+
+        <!-- Scan Again -->
+
+        <button
+          class="scan-again-button"
+          type="button"
+          (click)="resetFootprintScan()"
+        >
+
+          ↻ Scan Again
+
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+</section>
+
+<!-- ================= END CARBON FOOTPRINT SCANNER ================= -->
 <eco-bot></eco-bot>
 </div>

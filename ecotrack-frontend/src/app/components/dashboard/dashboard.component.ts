@@ -511,5 +511,155 @@ this.recommendationService.generateRecommendation(email).subscribe({
     });
 
   }
+  // ================= CARBON FOOTPRINT SCANNER =================
+
+isScanning = signal(false);
+scanComplete = signal(false);
+scanProgress = signal(0);
+
+scannerEmission = '3.10';
+
+// ================= ECO IDENTITY SCORE =================
+
+readonly ecoIdentityScore = computed(() => {
+
+  const activities = this.activityList();
+  const goals = this.goalList();
+
+  // No data
+  if (activities.length === 0 && goals.length === 0) {
+    return 0;
+  }
+
+  // -----------------------------
+  // 1. Activity Score - 40 points
+  // -----------------------------
+  const activityScore = Math.min(
+    activities.length * 8,
+    40
+  );
+
+  // -----------------------------
+  // 2. Carbon Score - 40 points
+  // Lower carbon = higher score
+  // -----------------------------
+  const carbon = this.totalCarbon();
+
+  let carbonScore = 40;
+
+  if (carbon > 0) {
+    carbonScore = Math.max(
+      0,
+      40 - (carbon * 0.8)
+    );
+  }
+
+  // -----------------------------
+  // 3. Goal Score - 20 points
+  // -----------------------------
+  const goalScore =
+    goals.length > 0
+      ? (this.achievedGoals() / goals.length) * 20
+      : 0;
+
+  // -----------------------------
+  // Final score
+  // -----------------------------
+  return Math.min(
+    100,
+    Math.max(
+      0,
+      Math.round(
+        activityScore +
+        carbonScore +
+        goalScore
+      )
+    )
+  );
+
+});
+
+readonly ecoIdentityTitle = computed(() => {
+
+  const score = this.ecoIdentityScore();
+
+  if (score >= 85) {
+    return 'GREEN CHAMPION';
+  }
+
+  if (score >= 70) {
+    return 'CONSCIOUS EXPLORER';
+  }
+
+  if (score >= 50) {
+    return 'ECO LEARNER';
+  }
+
+  return 'GREEN BEGINNER';
+
+});
+
+readonly ecoIdentityMessage = computed(() => {
+
+  const score = this.ecoIdentityScore();
+
+  if (score >= 85) {
+    return 'Amazing! Your recent choices show strong sustainable habits.';
+  }
+
+  if (score >= 70) {
+    return 'Your recent choices are leaving a lighter footprint.';
+  }
+
+  if (score >= 50) {
+    return 'You are building sustainable habits. Keep going!';
+  }
+
+  return 'Every small change counts. Start building greener habits today.';
+
+});
+
+
+// Start scanner
+startFootprintScan() {
+
+  this.isScanning.set(true);
+  this.scanComplete.set(false);
+  this.scanProgress.set(0);
+
+  let progress = 0;
+
+  const scanner = setInterval(() => {
+
+    progress += 1;
+
+    this.scanProgress.set(progress);
+
+    if (progress >= 100) {
+
+      clearInterval(scanner);
+
+      setTimeout(() => {
+
+        this.isScanning.set(false);
+        this.scanComplete.set(true);
+
+      }, 800);
+
+    }
+
+  }, 70);
+
+}
+
+
+// Reset scanner
+resetFootprintScan() {
+
+  this.scanComplete.set(false);
+  this.isScanning.set(false);
+  this.scanProgress.set(0);
+
+}
 
 }

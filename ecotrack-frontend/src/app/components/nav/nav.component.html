@@ -168,6 +168,160 @@
 
       </div>
 
+      <!-- NOTIFICATIONS -->
+@if (isLoggedIn()) {
+
+  <div class="nav__notification-wrapper">
+
+    <button
+      class="nav__notification-btn"
+      type="button"
+      aria-label="Notifications"
+      [attr.aria-expanded]="notificationOpen()"
+      (click)="toggleNotifications()"
+    >
+
+      <!-- Bell -->
+      <svg
+        viewBox="0 0 24 24"
+        width="21"
+        height="21"
+        aria-hidden="true"
+      >
+        <path
+          d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <path
+          d="M10 21h4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+
+
+      <!-- Unread badge -->
+      @if (unreadCount() > 0) {
+
+        <span class="nav__notification-badge">
+          {{ unreadCount() > 9 ? '9+' : unreadCount() }}
+        </span>
+
+      }
+
+    </button>
+
+
+    <!-- DROPDOWN -->
+    @if (notificationOpen()) {
+
+      <div class="nav__notification-dropdown">
+
+        <div class="nav__notification-header">
+
+          <div>
+            <h3>Notifications</h3>
+
+            @if (unreadCount() > 0) {
+              <span>
+                {{ unreadCount() }} unread
+              </span>
+            }
+
+          </div>
+
+
+          @if (unreadCount() > 0) {
+
+            <button
+              type="button"
+              class="nav__notification-read-all"
+              (click)="markAllAsRead()"
+            >
+              Mark all
+            </button>
+
+          }
+
+        </div>
+
+
+        <div class="nav__notification-list">
+
+          @if (notifications().length === 0) {
+
+            <div class="nav__notification-empty">
+
+              <span>🔔</span>
+
+              <p>No notifications</p>
+
+            </div>
+
+          }
+
+
+          @for (
+            notification of notifications();
+            track notification.id
+          ) {
+
+            <button
+              type="button"
+              class="nav__notification-item"
+              [class.nav__notification-item--unread]="!notification.read"
+              (click)="markAsRead(notification)"
+            >
+
+              <span class="nav__notification-icon">
+                {{ notification.icon }}
+              </span>
+
+
+              <span class="nav__notification-content">
+
+                <strong>
+                  {{ notification.title }}
+                </strong>
+
+                <span>
+                  {{ notification.message }}
+                </span>
+
+                <small>
+                  {{ notification.time }}
+                </small>
+
+              </span>
+
+
+              @if (!notification.read) {
+
+                <span class="nav__notification-dot"></span>
+
+              }
+
+            </button>
+
+          }
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+}
+
 
       <!-- ACCOUNT -->
       @if (isLoggedIn()) {
